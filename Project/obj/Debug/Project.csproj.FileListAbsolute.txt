@@ -1,0 +1,15 @@
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\MainWindow.g.cs
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\App.g.cs
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project_MarkupCompile.cache
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project_MarkupCompile.lref
+C:\Users\Лена\source\repos\Project\Project\bin\Debug\Project.exe.config
+C:\Users\Лена\source\repos\Project\Project\bin\Debug\Project.exe
+C:\Users\Лена\source\repos\Project\Project\bin\Debug\Project.pdb
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\MainWindow.baml
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project.g.resources
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project.Properties.Resources.resources
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project.csproj.GenerateResource.cache
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project.exe
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project.pdb
