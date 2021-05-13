@@ -63,7 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="first.cs" />
+    <Compile Include="Ship.cs" />
+    <Compile Include="Vector.cs" />
     <Compile Include="Zone.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

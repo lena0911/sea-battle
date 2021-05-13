@@ -13,19 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Project
+namespace Project //для хранения массива кораблей использ коллекцию
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        Zone fight = new Zone();
+        Ship[] ships = new Ship[4];
+        Zone fight = new Zone("Lena");
         Button[,] buttons = new Button[10, 10];
         public MainWindow()
         {
             InitializeComponent();
-
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                 {
@@ -35,49 +35,39 @@ namespace Project
                     buttons[i, j].Click += new RoutedEventHandler(this.Button_Click);
                     GridZone.Children.Add(buttons[i, j]);
                 }
-            fight.matrixShips[2, 2] = 1; //строка столбец
-            fight.matrixShips[2, 1] = 1;
-            //fight.matrixShips[2, 0] = 1;
-            fight.matrixShips[3, 4] = 1; //строка столбец
-            fight.matrixShips[4, 4] = 1;
+            ships[0] = new Ship(1, 0, 0, false, fight);
+            ships[1] = new Ship(2, 8, 1, true, fight);
+            ships[2] = new Ship(3, 6, 5, false, fight);
+            ships[3] = new Ship(4, 2, 2, true, fight);
         }
-        private void move()
+        private void move()//пересчет матрицы после очередного выстрела
         {
             int i, j;
             for (i = 0; i < 10; i++)
                 for (j = 0; j < 10; j++)
                 {
-                    if (fight.moveMatrix[i, j] == 1 && fight.moveMatrix[i, j] == fight.matrixShips[i, j])
+                    if (fight.moveMatrix[i, j] == 1 && fight.matrixShips[i, j] == 1)
                         MyControl1_Click_Red(buttons[i, j]);
                     else
                         if (fight.moveMatrix[i, j] == 1)
                         MyControl1_Click_Gray(buttons[i, j]);
                 }
         }
-        private void checkDestroyedShip()
+        public void coloringAfterKillingTheShip(int x, int y) //покраска после того, как целый корабль был потоплен
         {
-            int i, j, i1, j1;
-            for (i = 0; i < 10; i++)
-                for (j = 0; j < 10; j++)
-                {
-                    if (fight.moveMatrix[i, j] == 1 && fight.moveMatrix[i, j] == fight.matrixShips[i, j])
-                    {
-                        i1 = i;
-                        j1 = j;
-                        while (fight.moveMatrix[i1 + 1, j1] == 1 && fight.matrixShips[i1 + 1, j1] == 1)
-                            i1++;
-                        while (fight.moveMatrix[i1, j1 + 1] == 1 && fight.matrixShips[i1, j1 + 1] == 1)
-                            j1++;
-                        if (!(i == i1 && j == j1))
-                            for (int k = i - 1; k <= i1 + 1; k++)
-                                for (int t = j - 1; t <= j1 + 1; t++)
-                                {
-                                    if (fight.moveMatrix[k, t] == 0)
-                                        fight.moveMatrix[k, t] = 1;
-                                }
-                    }
-                }
+            for (int i = -1; i <= 1; i++)
+                for (int j = -1; j <= 1; j++)
+                    if (checkingCellsNearby(x+i, y+j))
+                        fight.moveMatrix[x + i, y + j] = 1;
         }
+        private bool checkingCellsNearby(int x, int y) //проверка выхода за пределы поля
+        {
+            if (x < 0 || x > 9 || y < 0 || y > 9)
+                return false;
+            else
+                return true;
+        }
+    
         private void Button_Click(object sender, EventArgs e)
         {
             if (sender != null)
@@ -85,10 +75,20 @@ namespace Project
                 int _row = Grid.GetRow((Button)sender);
                 int _column = Grid.GetColumn((Button)sender);
                 fight.moveMatrix[_row - 1, _column - 1] = 1;
-                checkDestroyedShip();
+                if (fight.matrixShips[_row - 1, _column - 1] == 1)
+                {
+                    int j = 0;
+                    while (!ships[j].searchShip(_row - 1, _column - 1))
+                        j++;
+                    if (ships[j].checkDestroyedShip()) //если корабль уничтожен, то обрисовываем вокруг него
+                    {
+                        for(int i=0; i<ships[j].Length; i++)
+                            coloringAfterKillingTheShip(ships[j].Coordinates[i].X, ships[j].Coordinates[i].Y);
+                    }
+                }
                 move();
             }
-
+            
         }
 
         private void MyControl1_Click_Red(object sender)
@@ -103,5 +103,7 @@ namespace Project
             b.Background = Brushes.Gray;
             int row = Grid.GetColumn(b);
         }
+        
+
     }
 }
