@@ -6,32 +6,26 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    class Ship
+    public class Ship
     {
-        private int length;
-        private Vector[] coordinates;
-        private bool[] shot;
+        private int length; //количество палуб
+        private Vector[] coordinates; //массив из вектор-координат
+        private bool[] shot; //массив попаданий в каждую палубу корабля
 
         internal Vector[] Coordinates { get => coordinates; set => coordinates = value; }
         public int Length { get => length; set => length = value; }
         public bool[] Shot { get => shot; set => shot = value; }
 
-        public Ship(int Lenght, int x, int y, bool direction, Zone fight) //direction = false, если расположен вертикально. true - горизонтально
+        public Ship(int Lenght, int x, int y, bool direction) //direction = true, если расположен вертикально. false - горизонтально
         {
             Length = Lenght;
             Coordinates = new Vector[Length];
             if (direction)
                 for (int i = 0; i < Length; i++)
-                {
-                    Coordinates[i] = new Vector(x, y + i);
-                    fight.matrixShips[x, y + i] = 1;
-                }
+                    Coordinates[i] = new Vector(x+i, y);
             else
                 for (int i = 0; i < Length; i++)
-                {
-                    Coordinates[i] = new Vector(x + i, y);
-                    fight.matrixShips[x + i, y] = 1;
-                }
+                    Coordinates[i] = new Vector(x, y + i);
             shot = new bool[length];
             for (int i = 0; i < length; i++)
                 shot[i] = false;
@@ -43,6 +37,7 @@ namespace Project
                     return false;
             return true;
         }
+
         public bool searchShip(int x, int y) //поиск коробля, по которому попали
         {
             for (int i = 0; i < length; i++)
@@ -51,6 +46,13 @@ namespace Project
                     shot[i] = true;
                     return true;
                 }
+            return false;
+        }
+        public bool searchShipForDelete(int x, int y) //поиск коробля, по которому попали
+        {
+            for (int i = 0; i < length; i++)
+                if (coordinates[i].X == x && coordinates[i].Y == y)
+                    return true;
             return false;
         }
     }

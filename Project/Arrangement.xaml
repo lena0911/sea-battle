@@ -1,0 +1,96 @@
+﻿<Window x:Class="Project.Arrangement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project"
+        mc:Ignorable="d"
+        Title="Arrangement"  Height="721.869" Width="1131.682">
+    <Grid>
+        <Grid Name="GridZone" Margin="40,80,700,200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="A" Grid.Column="1" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="Б" Grid.Column="2" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="В" Grid.Column="3" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="Г" Grid.Column="4" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="Д" Grid.Column="5" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="Е" Grid.Column="6" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="Ж" Grid.Column="7" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="З" Grid.Column="8" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="И" Grid.Column="9" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="К" Grid.Column="10" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="1" Grid.Column="0" Grid.Row="1" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="2" Grid.Column="0" Grid.Row="2" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="3" Grid.Column="0" Grid.Row="3" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="4" Grid.Column="0" Grid.Row="4" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="5" Grid.Column="0" Grid.Row="5" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="6" Grid.Column="0" Grid.Row="6" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="7" Grid.Column="0" Grid.Row="7" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="8" Grid.Column="0" Grid.Row="8" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="9" Grid.Column="0" Grid.Row="9" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="10" Grid.Column="0" Grid.Row="10" TextAlignment="Center" FontSize="32"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.RowSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.RowSpan="11"  />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2"  Grid.RowSpan="11"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="3" Grid.RowSpan="11"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="4" Grid.RowSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="5" Grid.RowSpan="11"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="6" Grid.RowSpan="11"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="7" Grid.RowSpan="11"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="8" Grid.RowSpan="11"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="9" Grid.RowSpan="11"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="10" Grid.RowSpan="11"/>
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="11" />
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="11" />
+            <Label Content="Морской бой" Grid.Column="10" HorizontalAlignment="Left" Margin="0,-81,-298,0" VerticalAlignment="Top" Width="333" Height="76" FontSize="48"/>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+        </Grid>
+        <RadioButton x:Name="pal_2" GroupName="Ships" Content="Двухпалубный" Margin="564,199,423,464" />
+        <RadioButton x:Name="pal_1" GroupName="Ships" Content="Однопалубный" Margin="564,232,423,431"  />
+        <RadioButton x:Name="pal_4" GroupName="Ships" Content="Четырёхпалубный" Margin="564,133,423,530" IsChecked="true"/>
+        <RadioButton x:Name="pal_3" GroupName="Ships" Content="Трёхпалубный" Margin="564,166,423,497"  />
+       
+        <Label Content="Выберете корабль:" HorizontalAlignment="Left" Height="39" Margin="551,89,0,0" VerticalAlignment="Top" Width="176"/>
+        <Label Content="Выберете положение:" HorizontalAlignment="Left" Height="38" Margin="791,80,0,0" VerticalAlignment="Top" Width="155"/>
+
+        <RadioButton x:Name="horizont" GroupName="position" Content="Горизонтально" Margin="791,133,196,530" IsChecked="true" />
+        <RadioButton x:Name="vertical" GroupName="position" Content="Вертикально" Margin="791,166,196,497"/>
+        <Button  x:Name="start" Content="Готов!" HorizontalAlignment="Left" Height="48" Margin="599,346,0,0" VerticalAlignment="Top" Width="114" Click="Start_Click" BorderBrush="Gray"  />
+        <Button  x:Name="Rand" Content="Рандом" HorizontalAlignment="Left" Height="39" Margin="490,458,0,0" VerticalAlignment="Top" Width="83" Click="Button_Click_1"/>
+        <Label x:Name="lal" Content="Label" HorizontalAlignment="Left" Height="45" Margin="652,497,0,0" VerticalAlignment="Top" Width="61"/>
+    </Grid>
+</Window>
