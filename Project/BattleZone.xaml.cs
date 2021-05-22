@@ -29,8 +29,11 @@ namespace Project //для хранения массива кораблей ис
         Zone fight;
         Button[,] buttonsLeft = new Button[10, 10];
         Button[,] buttonsRight = new Button[10, 10];
+        public string name1;
+        public string name2;
         int step = 1;
-        public BattleZone(List<Ship> ships1, Zone fight1, List<Ship> ships2, Zone fight2)
+      
+        public BattleZone(List<Ship> ships1, Zone fight1, List<Ship> ships2, Zone fight2, string name1, string name2)
         {
             
             InitializeComponent();
@@ -38,6 +41,11 @@ namespace Project //для хранения массива кораблей ис
             this.fight1 = fight1;
             this.ships2 = ships2;
             this.fight2 = fight2;
+            this.name1 = name1;
+            this.name2 = name2;
+            labelPlayer1.Content = name1;
+            labelPlayer2.Content = name2;
+            labelMove.Content = name1;
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                 {
@@ -155,7 +163,13 @@ namespace Project //для хранения массива кораблей ис
                         this.Close();
                     }
                 if (fight.matrixShips[_row - 1, _column - 1] != 1) //ход другого играка, при условии, что попадания не было
+                {
                     step++;
+                    if (step % 2 != 0)
+                        labelMove.Content = name1;
+                    else
+                        labelMove.Content = name2;
+                }
             }       
         }
         private void MyControl1_Click_Red(object sender)

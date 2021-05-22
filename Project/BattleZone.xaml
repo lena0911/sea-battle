@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Sea" Height="721.869" Width="1131.682">
     <Grid>
-        <Grid Name="GridZoneLeft" Margin="40,80,700,200">
+        <Grid Name="GridZoneLeft" Margin="40,100,700,200">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -62,7 +62,6 @@
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" />
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="11" />
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="11" />
-            <Label Content="Морской бой" Grid.Column="10" HorizontalAlignment="Left" Margin="0,-81,-298,0" VerticalAlignment="Top" Width="333" Height="76" FontSize="48"/>
 
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -79,8 +78,8 @@
             </Grid.RowDefinitions>
 
         </Grid>
-        <Grid>
-            <Grid Name="GridZoneRight" Margin="700,80,40,200">
+        <Grid Margin="0,10,0,-10">
+            <Grid Name="GridZoneRight" Margin="700,100,40,200">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -149,8 +148,15 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
             </Grid>
+            <Label Content="Морской бой" HorizontalAlignment="Left" Margin="398,0,0,0" VerticalAlignment="Top" Width="333" Height="76" FontSize="48"/>
+            <Label Content="Поле игрока" HorizontalAlignment="Left" Height="30" Margin="39,53,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Поле игрока" HorizontalAlignment="Left" Height="35" Margin="700,65,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="labelPlayer1" Content="Player1" HorizontalAlignment="Left" Height="35" Margin="133,53,0,0" VerticalAlignment="Top" Width="247"/>
+            <Label x:Name="labelPlayer2" Content="Player2" HorizontalAlignment="Left" Height="35" Margin="820,65,0,0" VerticalAlignment="Top" Width="117"/>
+            <Label Content="Ход игрока" HorizontalAlignment="Left" Height="49" Margin="489,100,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="labelMove" Content="player" HorizontalAlignment="Left" Height="48" Margin="489,140,0,0" VerticalAlignment="Top" Width="105"/>
         </Grid>
     </Grid>
-    
-    
+
+
 </Window>

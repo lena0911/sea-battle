@@ -19,6 +19,7 @@ namespace Project
     /// </summary>
     public partial class Arrangement : Window
     {
+        public string name;
         public List<Ship> ships = new List<Ship>();
         Button[,] buttons = new Button[10, 10];
         int pal1 = 0, pal2 = 0, pal3 = 0, pal4 = 0;
@@ -76,6 +77,7 @@ namespace Project
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
+            name = Name.Text;
             this.Close();
         }
 
@@ -182,6 +184,21 @@ namespace Project
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            Button_Click_Clear(sender, e);
+            AutomaticLocation auto = new AutomaticLocation(ships);
+            auto.shipsGeneration();
+           
+            for (int i = 0; i < ships.Count; i++)
+            {
+                blok(ships[i]);
+                for (int j = 0; j < ships[i].Length; j++)
+                    MyControl1_Click_Salmon(buttons[ships[i].Coordinates[j].X, ships[i].Coordinates[j].Y]);
+            }       
+
+        }
+
+        private void Button_Click_Clear(object sender, RoutedEventArgs e)
+        {
             pal1 = 4;
             pal2 = 3;
             pal3 = 2;
@@ -190,16 +207,6 @@ namespace Project
             for (int i = 0; i < ships.Count; i++)
                 unblok(ships[i]);
             ships.Clear();
-            AutomaticLocation auto = new AutomaticLocation(ships);
-            auto.shipsGeneration();
-            lal.Content = ships.Count;
-            for (int i = 0; i < ships.Count; i++)
-            {
-                blok(ships[i]);
-                for (int j = 0; j < ships[i].Length; j++)
-                    MyControl1_Click_Salmon(buttons[ships[i].Coordinates[j].X, ships[i].Coordinates[j].Y]);
-            }       
-
         }
 
         private void Button_Click(object sender, EventArgs e)

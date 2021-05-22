@@ -62,7 +62,7 @@
             <Border BorderBrush="Gray" BorderThickness="1" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" />
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="11" />
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="11" />
-            <Label Content="Морской бой" Grid.Column="10" HorizontalAlignment="Left" Margin="0,-81,-298,0" VerticalAlignment="Top" Width="333" Height="76" FontSize="48"/>
+            <Label Content="Подготовка к бою" Grid.Column="7" HorizontalAlignment="Left" Margin="25,-81,-468,0" VerticalAlignment="Top" Width="582" Height="76" FontSize="48" Grid.ColumnSpan="4"/>
 
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -83,7 +83,7 @@
         <RadioButton x:Name="pal_1" GroupName="Ships" Content="Однопалубный" Margin="564,232,423,431"  />
         <RadioButton x:Name="pal_4" GroupName="Ships" Content="Четырёхпалубный" Margin="564,133,423,530" IsChecked="true"/>
         <RadioButton x:Name="pal_3" GroupName="Ships" Content="Трёхпалубный" Margin="564,166,423,497"  />
-       
+
         <Label Content="Выберете корабль:" HorizontalAlignment="Left" Height="39" Margin="551,89,0,0" VerticalAlignment="Top" Width="176"/>
         <Label Content="Выберете положение:" HorizontalAlignment="Left" Height="38" Margin="791,80,0,0" VerticalAlignment="Top" Width="155"/>
 
@@ -91,6 +91,8 @@
         <RadioButton x:Name="vertical" GroupName="position" Content="Вертикально" Margin="791,166,196,497"/>
         <Button  x:Name="start" Content="Готов!" HorizontalAlignment="Left" Height="48" Margin="599,346,0,0" VerticalAlignment="Top" Width="114" Click="Start_Click" BorderBrush="Gray"  />
         <Button  x:Name="Rand" Content="Рандом" HorizontalAlignment="Left" Height="39" Margin="490,458,0,0" VerticalAlignment="Top" Width="83" Click="Button_Click_1"/>
-        <Label x:Name="lal" Content="Label" HorizontalAlignment="Left" Height="45" Margin="652,497,0,0" VerticalAlignment="Top" Width="61"/>
+        <Button  x:Name="Clear" Content="Очистить поле" HorizontalAlignment="Left" Height="39" Margin="331,503,0,0" VerticalAlignment="Top" Width="93" Click="Button_Click_Clear"/>
+        <Label Content="Введите Ваше имя:" HorizontalAlignment="Left" Height="43" Margin="795,454,0,0" VerticalAlignment="Top" Width="133"/>
+        <TextBox x:Name="Name"  HorizontalAlignment="Left" Height="45" Margin="795,497,0,0" TextWrapping="Wrap" Text="Кошка" VerticalAlignment="Top" Width="133" />
     </Grid>
 </Window>

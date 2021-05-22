@@ -21,6 +21,8 @@ namespace Project
     {
         public List<Ship> player1;
         public List<Ship> player2;
+        public string name1;
+        public string name2;
         int flag = 1;
         public MainWindow()
         {
@@ -34,6 +36,7 @@ namespace Project
                 Arrangement formArrangement1 = new Arrangement();
                 formArrangement1.ShowDialog();
                 player1 = formArrangement1.ships;
+                name1 = formArrangement1.name.ToString();
                 
             }
             if(flag==2)
@@ -41,10 +44,11 @@ namespace Project
                 Arrangement formArrangement2 = new Arrangement();
                 formArrangement2.ShowDialog();
                 player2 = formArrangement2.ships;
+                name2 = formArrangement2.name.ToString();
             }
             if (flag == 3)
             {
-                BattleZone fightZone = new BattleZone(player1, new Zone(player1), player2, new Zone(player2));
+                BattleZone fightZone = new BattleZone(player1, new Zone(player1), player2, new Zone(player2), name1, name2);
                 fightZone.Show();
             }
             flag++;

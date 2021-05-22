@@ -12,10 +12,6 @@
         <RadioButton Content="2 игрока" HorizontalAlignment="Left" Height="32" Margin="226,116,0,0" VerticalAlignment="Top" Width="109"/>
         <RadioButton Content="Бой против компьютера" HorizontalAlignment="Left" Height="32" Margin="226,148,0,0" VerticalAlignment="Top" Width="171"/>
         <Button Content="Ок" HorizontalAlignment="Left" Height="38" Margin="261,185,0,0" VerticalAlignment="Top" Width="65"/>
-        <Label Content="Игрок 1, введите&#xD;&#xA;Ваше имя:" HorizontalAlignment="Left" Height="43" Margin="65,271,0,0" VerticalAlignment="Top" Width="133"/>
-        <Label Content="Игрок 2, введите&#xA;Ваше имя:" HorizontalAlignment="Left" Height="43" Margin="261,271,0,0" VerticalAlignment="Top" Width="133"/>
-        <TextBox HorizontalAlignment="Left" Height="45" Margin="65,314,0,0" TextWrapping="Wrap" Text="Кошка" VerticalAlignment="Top" Width="133"/>
-        <TextBox HorizontalAlignment="Left" Height="45" Margin="261,314,0,0" TextWrapping="Wrap" Text="Мышка" VerticalAlignment="Top" Width="133" RenderTransformOrigin="1.647,0.689"/>
 
     </Grid>
 </Window>
