@@ -5,13 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Морской бой" Height="450" Width="800" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="{x:Type Button}">
+            <Setter Property="Control.Background" Value="Chartreuse"/>
+
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush>
+            <ImageBrush.ImageSource>
+                <BitmapImage UriSource="C:\Users\Лена\source\repos\Project\fon.jpg"/>
+            </ImageBrush.ImageSource>
+        </ImageBrush>
+    </Window.Background>
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="87" Margin="509,136,0,0" VerticalAlignment="Top" Width="115" Click="Button_Click"/>
-        <Label Content="Выберете тип игры:" HorizontalAlignment="Left" Height="43" Margin="226,68,0,0" VerticalAlignment="Top" Width="133"/>
-        <RadioButton Content="2 игрока" HorizontalAlignment="Left" Height="32" Margin="226,116,0,0" VerticalAlignment="Top" Width="109"/>
-        <RadioButton Content="Бой против компьютера" HorizontalAlignment="Left" Height="32" Margin="226,148,0,0" VerticalAlignment="Top" Width="171"/>
-        <Button Content="Ок" HorizontalAlignment="Left" Height="38" Margin="261,185,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="arrangement" Content="Ок" HorizontalAlignment="Left" Height="40" Margin="201,296,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click" Background="#FF99F5E4" FontFamily="Showcard Gothic" FontSize="25" />
+        <Label Content="Выберите тип игры:" HorizontalAlignment="Left" Height="43" Margin="104,122,0,0" VerticalAlignment="Top" Width="258" FontSize="25" FontFamily="Script MT Bold"/>
+        <RadioButton x:Name="players2rb" GroupName="TypeOfGame" Content="2 игрока" IsChecked="true" HorizontalAlignment="Left" Height="32" Margin="121,170,0,0" VerticalAlignment="Top" Width="149" FontSize="25" FontFamily="Segoe Script"/>
+        <RadioButton x:Name="vsPCrb" GroupName="TypeOfGame" Content="Бой против компьютера" HorizontalAlignment="Left" Height="32" Margin="121,207,0,0" VerticalAlignment="Top" Width="381" FontSize="25" FontFamily="Segoe Script"/>
+        <Label  Content="Морской бой" HorizontalAlignment="Left" Margin="247,0,0,0" VerticalAlignment="Top" Width="359" Height="76" FontSize="48" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF4900B4"/>
 
     </Grid>
 </Window>

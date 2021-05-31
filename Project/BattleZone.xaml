@@ -5,63 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="Sea" Height="721.869" Width="1131.682">
+        Title="Sea Battle" Height="650" Width="1131.682" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush>
+            <ImageBrush.ImageSource>
+                <BitmapImage UriSource="C:\Users\Лена\source\repos\Project\5.jpg"/>
+            </ImageBrush.ImageSource>
+        </ImageBrush>
+    </Window.Background>
     <Grid>
-        <Grid Name="GridZoneLeft" Margin="40,100,700,200">
+        <Grid Name="GridZoneLeft" Margin="40,100,680,100">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="34*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="35*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="A" Grid.Column="1" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="Б" Grid.Column="2" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="В" Grid.Column="3" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="Г" Grid.Column="4" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="Д" Grid.Column="5" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="Е" Grid.Column="6" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="Ж" Grid.Column="7" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="З" Grid.Column="8" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="И" Grid.Column="9" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="К" Grid.Column="10" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="1" Grid.Column="0" Grid.Row="1" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="2" Grid.Column="0" Grid.Row="2" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="3" Grid.Column="0" Grid.Row="3" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="4" Grid.Column="0" Grid.Row="4" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="5" Grid.Column="0" Grid.Row="5" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="6" Grid.Column="0" Grid.Row="6" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="7" Grid.Column="0" Grid.Row="7" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="8" Grid.Column="0" Grid.Row="8" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="9" Grid.Column="0" Grid.Row="9" TextAlignment="Center" FontSize="32"/>
-            <TextBlock Text="10" Grid.Column="0" Grid.Row="10" TextAlignment="Center" FontSize="32"/>
+            <TextBlock Text="A" Grid.Column="1" TextAlignment="Center" FontSize="32" Foreground="#FFFBFBFB"/>
+            <TextBlock Text="Б" Grid.Column="2" TextAlignment="Center" FontSize="32" Foreground="#FFFFFDFD"/>
+            <TextBlock Text="В" Grid.Column="3" TextAlignment="Center" FontSize="32" Foreground="White"/>
+            <TextBlock Text="Г" Grid.Column="4" TextAlignment="Center" FontSize="32" Foreground="#FFFDFDFD"/>
+            <TextBlock Text="Д" Grid.Column="5" TextAlignment="Center" FontSize="32" Foreground="#FFFBFBFB"/>
+            <TextBlock Text="Е" Grid.Column="6" TextAlignment="Center" FontSize="32" Foreground="#FFF9F8F8"/>
+            <TextBlock Text="Ж" Grid.Column="7" TextAlignment="Center" FontSize="32" Foreground="White"/>
+            <TextBlock Text="З" Grid.Column="8" TextAlignment="Center" FontSize="32" Foreground="#FFFBFBFB"/>
+            <TextBlock Text="И" Grid.Column="9" TextAlignment="Center" FontSize="32" Foreground="White"/>
+            <TextBlock Text="К" Grid.Column="10" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+            <TextBlock Text="1" Grid.Column="0" Grid.Row="1" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+            <TextBlock Text="2" Grid.Column="0" Grid.Row="2" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+            <TextBlock Text="3" Grid.Column="0" Grid.Row="3" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+            <TextBlock Text="4" Grid.Column="0" Grid.Row="4" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+            <TextBlock Text="5" Grid.Column="0" Grid.Row="5" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+            <TextBlock Text="6" Grid.Column="0" Grid.Row="6" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+            <TextBlock Text="7" Grid.Column="0" Grid.Row="7" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+            <TextBlock Text="8" Grid.Column="0" Grid.Row="8" TextAlignment="Center" FontSize="32" Foreground="#FFF7F7F7"/>
+            <TextBlock Text="9" Grid.Column="0" Grid.Row="9" TextAlignment="Center" FontSize="32" Foreground="White"/>
+            <TextBlock Text="10" Grid.Column="0" Grid.Row="10" TextAlignment="Center" FontSize="32" Foreground="White"/>
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.RowSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.RowSpan="11"  />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2"  Grid.RowSpan="11"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="3" Grid.RowSpan="11"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="4" Grid.RowSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="5" Grid.RowSpan="11"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="6" Grid.RowSpan="11"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="7" Grid.RowSpan="11"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="8" Grid.RowSpan="11"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="9" Grid.RowSpan="11"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="10" Grid.RowSpan="11"/>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="11" />
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="1" Grid.RowSpan="11"  />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="2"  Grid.RowSpan="11"/>
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="3" Grid.RowSpan="11"/>
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="4" Grid.RowSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="5" Grid.RowSpan="11"/>
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="6" Grid.RowSpan="11"/>
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="7" Grid.RowSpan="11"/>
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="8" Grid.RowSpan="11"/>
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="9" Grid.RowSpan="11"/>
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="10" Grid.RowSpan="11"/>
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="11" />
+            <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="11" />
 
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -78,8 +85,8 @@
             </Grid.RowDefinitions>
 
         </Grid>
-        <Grid Margin="0,10,0,-10">
-            <Grid Name="GridZoneRight" Margin="700,100,40,200">
+        <Grid >
+            <Grid Name="GridZoneRight" Margin="680,100,40,100">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -93,68 +100,136 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="A" Grid.Column="1" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="Б" Grid.Column="2" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="В" Grid.Column="3" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="Г" Grid.Column="4" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="Д" Grid.Column="5" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="Е" Grid.Column="6" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="Ж" Grid.Column="7" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="З" Grid.Column="8" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="И" Grid.Column="9" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="К" Grid.Column="10" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="1" Grid.Column="0" Grid.Row="1" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="2" Grid.Column="0" Grid.Row="2" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="3" Grid.Column="0" Grid.Row="3" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="4" Grid.Column="0" Grid.Row="4" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="5" Grid.Column="0" Grid.Row="5" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="6" Grid.Column="0" Grid.Row="6" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="7" Grid.Column="0" Grid.Row="7" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="8" Grid.Column="0" Grid.Row="8" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="9" Grid.Column="0" Grid.Row="9" TextAlignment="Center" FontSize="32"/>
-                <TextBlock Text="10" Grid.Column="0" Grid.Row="10" TextAlignment="Center" FontSize="32"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.RowSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.RowSpan="11"  />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2"  Grid.RowSpan="11"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="3" Grid.RowSpan="11"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="4" Grid.RowSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="5" Grid.RowSpan="11"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="6" Grid.RowSpan="11"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="7" Grid.RowSpan="11"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="8" Grid.RowSpan="11"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="9" Grid.RowSpan="11"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="10" Grid.RowSpan="11"/>
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="11" />
-                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="11" />
+                <TextBlock Text="A" Grid.Column="1" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="Б" Grid.Column="2" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="В" Grid.Column="3" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="Г" Grid.Column="4" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="Д" Grid.Column="5" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="Е" Grid.Column="6" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="Ж" Grid.Column="7" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="З" Grid.Column="8" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="И" Grid.Column="9" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="К" Grid.Column="10" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="1" Grid.Column="0" Grid.Row="1" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="2" Grid.Column="0" Grid.Row="2" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="3" Grid.Column="0" Grid.Row="3" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="4" Grid.Column="0" Grid.Row="4" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="5" Grid.Column="0" Grid.Row="5" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="6" Grid.Column="0" Grid.Row="6" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="7" Grid.Column="0" Grid.Row="7" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="8" Grid.Column="0" Grid.Row="8" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="9" Grid.Column="0" Grid.Row="9" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <TextBlock Text="10" Grid.Column="0" Grid.Row="10" TextAlignment="Center" FontSize="32" Foreground="#FFF9F6F6"/>
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="1" Grid.RowSpan="11"  />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="2"  Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="3" Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="4" Grid.RowSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="5" Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="6" Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="7" Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="8" Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="9" Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="10" Grid.RowSpan="11"/>
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="11" />
+                <Border BorderBrush="#FFF4B9FD" BorderThickness="1" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="11" />
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="38*"/>
                 </Grid.RowDefinitions>
             </Grid>
-            <Label Content="Морской бой" HorizontalAlignment="Left" Margin="398,0,0,0" VerticalAlignment="Top" Width="333" Height="76" FontSize="48"/>
-            <Label Content="Поле игрока" HorizontalAlignment="Left" Height="30" Margin="39,53,0,0" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Поле игрока" HorizontalAlignment="Left" Height="35" Margin="700,65,0,0" VerticalAlignment="Top" Width="120"/>
-            <Label x:Name="labelPlayer1" Content="Player1" HorizontalAlignment="Left" Height="35" Margin="133,53,0,0" VerticalAlignment="Top" Width="247"/>
-            <Label x:Name="labelPlayer2" Content="Player2" HorizontalAlignment="Left" Height="35" Margin="820,65,0,0" VerticalAlignment="Top" Width="117"/>
-            <Label Content="Ход игрока" HorizontalAlignment="Left" Height="49" Margin="489,100,0,0" VerticalAlignment="Top" Width="120"/>
-            <Label x:Name="labelMove" Content="player" HorizontalAlignment="Left" Height="48" Margin="489,140,0,0" VerticalAlignment="Top" Width="105"/>
+            <Label x:Name="fightLabel" Content="Морской бой" HorizontalAlignment="Left" Margin="398,0,0,0" VerticalAlignment="Top" Width="626" Height="76" FontSize="48" FontFamily="Segoe Script" FontWeight="Bold" Background="{x:Null}" BorderBrush="Black">
+                <Label.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF382649" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+            </Label>
+            <Label  Content="Поле игрока" HorizontalAlignment="Left" Height="44" Margin="40,523,0,0" VerticalAlignment="Top" Width="145" FontSize="20" FontFamily="Segoe UI Black" Background="White">
+                <Label.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF0E0C0C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.BorderBrush>
+                <Label.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="Red" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+            </Label>
+            <Label x:Name="labelPlayer1" Content="Player1" HorizontalAlignment="Left" Height="44" Margin="190,523,0,0" VerticalAlignment="Top" Width="253" FontFamily="Segoe UI Black" FontSize="20" Background="#FF8AD8E4" >
+                <Label.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF0E0C0C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.BorderBrush>
+                <Label.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FFFF0C00" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+            </Label>
+            <Label x:Name="labelPlayer2" Content="Player2" HorizontalAlignment="Left" Height="43" Margin="830,524,0,0" VerticalAlignment="Top" Width="254" FontFamily="Segoe UI Black" FontSize="20"  RenderTransformOrigin="-0.135,1.473" Background="#FF8AD8E4">
+                <Label.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF0E0C0C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.BorderBrush>
+                <Label.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="Red" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+            </Label>
+            <Label x:Name="result"  Content="Ход игрока" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Height="106" Margin="450,100,0,0" VerticalAlignment="Top" Width="225" FontSize="20" FontFamily="Segoe UI Black" Background="{x:Null}" Foreground="#FFFF9C9C"/>
+            <Label x:Name="labelMove" HorizontalContentAlignment="Center" Content="player" HorizontalAlignment="Left" Height="51" Margin="450,211,0,357" VerticalAlignment="Center" Width="225" FontFamily="Segoe UI Black" FontSize="20" Foreground="White" />
+            <Label  Content="Поле игрока" HorizontalAlignment="Left" Height="44" Margin="680,523,0,0" VerticalAlignment="Top" Width="145" FontSize="20" FontFamily="Segoe UI Black" Background="#FFFBFBFB">
+                <Label.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF0E0C0C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.BorderBrush>
+                <Label.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FFFB0000" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Foreground>
+            </Label>
+            <Label x:Name="congrat"  HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="66" Margin="450,267,0,0" VerticalAlignment="Top" Width="225" FontSize="20" FontFamily="Segoe UI Black" Foreground="#FFF7A6A6"/>
+            <Button x:Name="restert" Visibility="Collapsed" Content="Реванш!"  HorizontalAlignment="Left" Height="45" Margin="495,545,0,0" VerticalAlignment="Top" Width="115" Foreground="#FF531E1E" FontSize="20" FontFamily="Showcard Gothic" Click="restert_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </Grid>
     </Grid>
 

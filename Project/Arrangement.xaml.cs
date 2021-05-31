@@ -77,6 +77,16 @@ namespace Project
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
+            if(ships.Count<10)
+            {
+                MessageBox.Show("Расставьте все корабли!");
+                return;
+            }
+            if (Name.Text=="")
+            {
+                MessageBox.Show("Введите свое имя!");
+                return;
+            }
             name = Name.Text;
             this.Close();
         }
@@ -182,12 +192,16 @@ namespace Project
             return 0; //нельзя поставить
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_Random(object sender, RoutedEventArgs e)
         {
             Button_Click_Clear(sender, e);
             AutomaticLocation auto = new AutomaticLocation(ships);
             auto.shipsGeneration();
-           
+            pal1 = 4;
+            pal2 = 3;
+            pal3 = 2;
+            pal4 = 1;
+            CheckVisibleRadioButtons();
             for (int i = 0; i < ships.Count; i++)
             {
                 blok(ships[i]);
@@ -199,14 +213,15 @@ namespace Project
 
         private void Button_Click_Clear(object sender, RoutedEventArgs e)
         {
-            pal1 = 4;
-            pal2 = 3;
-            pal3 = 2;
-            pal4 = 1;
-            CheckVisibleRadioButtons();
+           
+            pal1 = 0;
+            pal2 = 0;
+            pal3 = 0;
+            pal4 = 0;
             for (int i = 0; i < ships.Count; i++)
                 unblok(ships[i]);
             ships.Clear();
+            CheckVisibleRadioButtons();
         }
 
         private void Button_Click(object sender, EventArgs e)

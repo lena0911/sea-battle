@@ -41,7 +41,7 @@ namespace Project
         {
             if (x == 1)
                 pal1--;
-            if (x== 2)
+            if (x == 2)
                 pal2--;
             if (x == 3)
                 pal3--;
@@ -50,8 +50,8 @@ namespace Project
         }
         public int shipCheckBan(int x) //проверка можно ли еще генерировать корабль такого размера
         {
-            if (x == 1 && pal1 == 0 || x == 2 && pal2 == 0 || x == 3 && pal3 == 0 || x==4 && pal4==0)
-                return 0;                   
+            if (x == 1 && pal1 == 0 || x == 2 && pal2 == 0 || x == 3 && pal3 == 0 || x == 4 && pal4 == 0)
+                return 0;
             return 1;
         }
         public void block() //блокировка недоступныч клеток
@@ -100,11 +100,11 @@ namespace Project
             if (!or)
                 for (tv = 0; tv < n; tv++)
                     if (CheckingCellsNearby(i, j + tv))
-                        if(matrixShips[i, j + tv] != 0)
+                        if (matrixShips[i, j + tv] != 0)
                             break;
                         else;
                     else
-                        break; 
+                        break;
             if (tv == n)
                 return true; //можно
             return false; //нельзя
@@ -113,7 +113,7 @@ namespace Project
         {
             int i, j;
             bool orientation;
-            while (shipCheckBan(n)!= 0) //можно ли ставить такие корабли
+            while (shipCheckBan(n) != 0) //можно ли ставить такие корабли
             {
                 i = randGeneration(0, 10);
                 j = randGeneration(0, 10);
@@ -125,22 +125,14 @@ namespace Project
                     ships.Add(new Ship(n, i, j, orientation));
                     block(); //блокируем недоступные клетки
                 }
-               
             }
         }
         public void shipsGeneration() //генерация кораблей
         {
-            try
-            {
-                positionGeneration(4);
-                positionGeneration(3);
-                positionGeneration(2);
-                positionGeneration(1);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            positionGeneration(4);
+            positionGeneration(3);
+            positionGeneration(2);
+            positionGeneration(1);
         }
     }
 }

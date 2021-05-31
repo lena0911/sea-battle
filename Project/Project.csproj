@@ -76,12 +76,19 @@
     </Compile>
     <Compile Include="Ship.cs" />
     <Compile Include="Vector.cs" />
+    <Compile Include="Win.xaml.cs">
+      <DependentUpon>Win.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Zone.cs" />
     <Compile Include="BattleZone.xaml.cs">
       <DependentUpon>BattleZone.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Win.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
