@@ -19,3 +19,6 @@ C:\Users\Лена\source\repos\Project\Project\obj\Debug\MainWindow.g.cs
 C:\Users\Лена\source\repos\Project\Project\obj\Debug\MainWindow.baml
 C:\Users\Лена\source\repos\Project\Project\obj\Debug\Win.g.cs
 C:\Users\Лена\source\repos\Project\Project\obj\Debug\Win.baml
+C:\Users\Лена\source\repos\Project\Project\bin\Debug\seaBattle_Library.dll
+C:\Users\Лена\source\repos\Project\Project\bin\Debug\seaBattle_Library.pdb
+C:\Users\Лена\source\repos\Project\Project\obj\Debug\Project.csproj.CopyComplete

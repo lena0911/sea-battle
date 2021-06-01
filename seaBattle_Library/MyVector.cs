@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project
+namespace seaBattle_Library
 {
-    class Vector
+    public class MyVector
     {
-        private int x;
-        private int y;
+        public int x;
+        public int y;
 
         public int X { get => x; set => x = value; }
         public int Y { get => y; set => y = value; }
 
-        public Vector(int x, int y)
+        public MyVector(int x, int y)
         {
             this.X = x;
             this.Y = y;

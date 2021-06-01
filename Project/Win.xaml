@@ -5,20 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="Win" Height="450" Width="500">
-    <Window.Background>
-        <ImageBrush>
-            <ImageBrush.ImageSource>
-                <BitmapImage UriSource="C:\Users\Лена\source\repos\Project\2.jpg"/>
-            </ImageBrush.ImageSource>
-        </ImageBrush>
-    </Window.Background>
+        Title="Победа!" Height="450" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
     <Grid>
         <Label Content="Бой закончен!" HorizontalAlignment="Left" Height="85" Margin="30,25,0,0" VerticalAlignment="Top" Width="280" FontSize="25" FontFamily="Segoe Script" Foreground="#FFD60000"/>
-        <Label Content="Победу одержал" HorizontalAlignment="Left" Height="45" Margin="30,85,0,0" VerticalAlignment="Top" Width="180" FontSize="20" FontFamily="Sylfaen"/>
-        <Label x:Name="winner" Content="Lena" HorizontalAlignment="Left" Height="50" Margin="30,135,0,0" VerticalAlignment="Top" Width="155" FontSize="20" FontFamily="SimSun"/>
+        <Label x:Name="winLabel" Content="Победу одержал" HorizontalAlignment="Left" Height="45" Margin="30,85,0,0" VerticalAlignment="Top" Width="180" FontSize="20" FontFamily="Sylfaen"/>
+        <Label x:Name="winner" Content="Lena" HorizontalAlignment="Left" Height="50" Margin="30,135,0,0" VerticalAlignment="Top" Width="350" FontSize="20" FontFamily="Sylfaen" FontWeight="Bold"/>
         <Button Content="Реванш!" HorizontalAlignment="Left" Height="55" Margin="367,340,0,0" VerticalAlignment="Top" Width="115" FontSize="20" FontFamily="Showcard Gothic" Background="#FFE7D6FF" Click="Button_Click"/>
         <Button Content="Посмотреть поле" HorizontalAlignment="Left" Height="55" Margin="10,340,0,0" VerticalAlignment="Top" Width="175" FontSize="20" FontFamily="Showcard Gothic" Background="#FFE7D6FF" Click="Button_Click_1"/>
+        <Button x:Name="closeButton" Content="Закрыть" HorizontalAlignment="Left" Height="30" Margin="410,10,0,0" VerticalAlignment="Top" Width="61" Background="#FFE7D6FF" Click="closeButton_Click"/>
 
     </Grid>
 </Window>

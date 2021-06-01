@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using seaBattle_Library;
 namespace Project
 {
     /// <summary>
@@ -26,26 +27,34 @@ namespace Project
         int flag = 0;
         public MainWindow()
         {
+            ImageBrush imBrush = new ImageBrush()
+            {
+                ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../images/main.jpg"))
+            };
+            this.Background = imBrush;
             InitializeComponent();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             players2rb.IsEnabled = false;
             vsPCrb.IsEnabled = false;
             if (players2rb.IsChecked == true) //если выбран режим "2 игрока"
             {
                 if (flag == 0)
                 {
-
                     Arrangement formArrangement1 = new Arrangement();
+                    this.Hide();
                     formArrangement1.ShowDialog();
                     player1 = formArrangement1.ships;
                     name1 = formArrangement1.name.ToString();
-
                     Arrangement formArrangement2 = new Arrangement();
+                    this.Hide();
+                    formArrangement2.playerLabel.Content = "Игрок 2";
                     formArrangement2.ShowDialog();
+                    arrangement.Content = "Старт!";
+                    if (formArrangement2.closeWind)
+                        this.Close();
+                    this.Show();                 
                     player2 = formArrangement2.ships;
                     name2 = formArrangement2.name.ToString();
                 }
@@ -72,6 +81,11 @@ namespace Project
                 fightZone.Show();
                 this.Close();
             }
+        }
+
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

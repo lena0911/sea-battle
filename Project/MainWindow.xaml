@@ -5,26 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="Морской бой" Height="450" Width="800" ResizeMode="NoResize">
-    <Window.Resources>
-        <Style x:Key="{x:Type Button}">
-            <Setter Property="Control.Background" Value="Chartreuse"/>
-
-        </Style>
-    </Window.Resources>
-    <Window.Background>
-        <ImageBrush>
-            <ImageBrush.ImageSource>
-                <BitmapImage UriSource="C:\Users\Лена\source\repos\Project\fon.jpg"/>
-            </ImageBrush.ImageSource>
-        </ImageBrush>
-    </Window.Background>
+        Title="Морской бой" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+   
+  
     <Grid>
-        <Button x:Name="arrangement" Content="Ок" HorizontalAlignment="Left" Height="40" Margin="201,296,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click" Background="#FF99F5E4" FontFamily="Showcard Gothic" FontSize="25" />
+        <Button x:Name="arrangement" Content="Ок" HorizontalAlignment="Left" Height="40" Margin="205,270,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click" FontFamily="Showcard Gothic" FontSize="25" Background="#FFC3FF7B" />
         <Label Content="Выберите тип игры:" HorizontalAlignment="Left" Height="43" Margin="104,122,0,0" VerticalAlignment="Top" Width="258" FontSize="25" FontFamily="Script MT Bold"/>
         <RadioButton x:Name="players2rb" GroupName="TypeOfGame" Content="2 игрока" IsChecked="true" HorizontalAlignment="Left" Height="32" Margin="121,170,0,0" VerticalAlignment="Top" Width="149" FontSize="25" FontFamily="Segoe Script"/>
         <RadioButton x:Name="vsPCrb" GroupName="TypeOfGame" Content="Бой против компьютера" HorizontalAlignment="Left" Height="32" Margin="121,207,0,0" VerticalAlignment="Top" Width="381" FontSize="25" FontFamily="Segoe Script"/>
         <Label  Content="Морской бой" HorizontalAlignment="Left" Margin="247,0,0,0" VerticalAlignment="Top" Width="359" Height="76" FontSize="48" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF4900B4"/>
+        <Button x:Name="closeButton" Content="Закрыть" HorizontalAlignment="Left" Height="30" Margin="710,10,0,0" VerticalAlignment="Top" Width="61" FontFamily="Showcard Gothic" FontSize="12" Background="#FFC3FF7B" Click="closeButton_Click"/>
 
     </Grid>
 </Window>

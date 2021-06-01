@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project
+namespace seaBattle_Library
 {
     public class AutomaticLocation
     {
@@ -54,28 +54,16 @@ namespace Project
                 return 0;
             return 1;
         }
-        public void block() //блокировка недоступныч клеток
+        public void block() //блокировка недоступных клеток
         {
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                     if (matrixShips[i, j] == 1)
                     {
-                        if (CheckingCellsNearby(i - 1, j) && matrixShips[i - 1, j] == 0)
-                            matrixShips[i - 1, j] = 2;
-                        if (CheckingCellsNearby(i + 1, j) && matrixShips[i + 1, j] == 0)
-                            matrixShips[i + 1, j] = 2;
-                        if (CheckingCellsNearby(i - 1, j - 1) && matrixShips[i - 1, j - 1] == 0)
-                            matrixShips[i - 1, j - 1] = 2;
-                        if (CheckingCellsNearby(i + 1, j + 1) && matrixShips[i + 1, j + 1] == 0)
-                            matrixShips[i + 1, j + 1] = 2;
-                        if (CheckingCellsNearby(i + 1, j - 1) && matrixShips[i + 1, j - 1] == 0)
-                            matrixShips[i + 1, j - 1] = 2;
-                        if (CheckingCellsNearby(i - 1, j + 1) && matrixShips[i - 1, j + 1] == 0)
-                            matrixShips[i - 1, j + 1] = 2;
-                        if (CheckingCellsNearby(i, j - 1) && matrixShips[i, j - 1] == 0)
-                            matrixShips[i, j - 1] = 2;
-                        if (CheckingCellsNearby(i, j + 1) && matrixShips[i, j + 1] == 0)
-                            matrixShips[i, j + 1] = 2;
+                        for (int k = -1; k <= 1; k++)
+                            for (int t = -1; t <= 1; t++)
+                                if (CheckingCellsNearby(i + k, j + t) && matrixShips[i + k, j + t] == 0)
+                                    matrixShips[i + k, j + t] = 2;
                     }
         }
         public void fillingTheMatrix(int i, int j, int n, bool or) //заполнение матрицы после добавления корабля

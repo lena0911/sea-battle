@@ -4,28 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project
+namespace seaBattle_Library
 {
     public class Ship
     {
-        private int length; //количество палуб
-        private Vector[] coordinates; //массив из вектор-координат
-        private bool[] shot; //массив попаданий в каждую палубу корабля
+        public int length; //количество палуб
+        public MyVector[] coordinates; //массив из вектор-координат
+        public bool[] shot; //массив попаданий в каждую палубу корабля
 
-        internal Vector[] Coordinates { get => coordinates; set => coordinates = value; }
+        public MyVector[] Coordinates { get => coordinates; set => coordinates = value; }
         public int Length { get => length; set => length = value; }
         public bool[] Shot { get => shot; set => shot = value; }
 
         public Ship(int Lenght, int x, int y, bool direction) //direction = true, если расположен вертикально. false - горизонтально
         {
             Length = Lenght;
-            Coordinates = new Vector[Length];
+            Coordinates = new MyVector[Length];
             if (direction)
                 for (int i = 0; i < Length; i++)
-                    Coordinates[i] = new Vector(x+i, y);
+                    Coordinates[i] = new MyVector(x + i, y);
             else
                 for (int i = 0; i < Length; i++)
-                    Coordinates[i] = new Vector(x, y + i);
+                    Coordinates[i] = new MyVector(x, y + i);
             shot = new bool[length];
             for (int i = 0; i < length; i++)
                 shot[i] = false;

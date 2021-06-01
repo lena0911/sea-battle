@@ -5,17 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
         mc:Ignorable="d"
-        Title="Arrangement"  Height="650" Width="1131.682" ResizeMode="NoResize">
+        Title="Подготовка к бою"  Height="650" Width="1131.682" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-    <Window.Background>
-        <ImageBrush>
-            <ImageBrush.ImageSource>
-                <BitmapImage UriSource="C:\Users\Лена\source\repos\Project\7.jpg"/>
-            </ImageBrush.ImageSource>
-        </ImageBrush>
-    </Window.Background>
+   
 
     <Grid>
+        <Label x:Name="playerLabel" HorizontalContentAlignment="Center" Content="Игрок 1" HorizontalAlignment="Left" Height="51" Margin="10,31,0,539" VerticalAlignment="Center" Width="225" FontFamily="Segoe UI Black" FontSize="20" Foreground="White" />
         <Label Content="Подготовка к бою" HorizontalAlignment="Left" Margin="306,0,0,0" VerticalAlignment="Top" Width="582" Height="76" FontSize="48" FontFamily="Segoe Script" FontWeight="Bold">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -111,5 +106,6 @@
         <Button  x:Name="Clear" Content="Очистить поле" HorizontalAlignment="Left" Height="39" Margin="306,547,0,0" VerticalAlignment="Top" Width="118" Click="Button_Click_Clear" Background="#FFACBCF1" FontSize="15" FontFamily="Yu Gothic UI Semilight"/>
         <Label Content="Введите Ваше имя:" HorizontalAlignment="Left" Height="38" Margin="488,498,0,0" VerticalAlignment="Top" Width="210" FontFamily="Segoe UI Black" Background="#FFFFCDF4" Foreground="#FF810381" FontSize="20"/>
         <TextBox x:Name="Name"  HorizontalAlignment="Left" Height="45" Margin="488,541,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" FontSize="20" FontFamily="Yu Gothic UI Semilight" />
+        <Button  x:Name="closeButton" Content="Закрыть" HorizontalAlignment="Left" Height="35" Margin="1030,10,0,0" VerticalAlignment="Top" Width="66" Click="closeButton_Click" BorderBrush="Gray" Background="#FFACBCF1" FontSize="15" FontFamily="Yu Gothic UI Semilight" />
     </Grid>
 </Window>

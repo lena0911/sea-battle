@@ -1,0 +1,5 @@
+C:\Users\Лена\source\repos\Project\seaBattle_Library\bin\Debug\seaBattle_Library.dll
+C:\Users\Лена\source\repos\Project\seaBattle_Library\bin\Debug\seaBattle_Library.pdb
+C:\Users\Лена\source\repos\Project\seaBattle_Library\obj\Debug\seaBattle_Library.csproj.CoreCompileInputs.cache
+C:\Users\Лена\source\repos\Project\seaBattle_Library\obj\Debug\seaBattle_Library.dll
+C:\Users\Лена\source\repos\Project\seaBattle_Library\obj\Debug\seaBattle_Library.pdb

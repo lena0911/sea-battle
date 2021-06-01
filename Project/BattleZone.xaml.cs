@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using seaBattle_Library;
 
 namespace Project //для хранения массива кораблей использ коллекцию
 {
@@ -21,20 +22,20 @@ namespace Project //для хранения массива кораблей ис
     /// </summary>
     public partial class BattleZone : Window
     {
-        List<Ship> ships1 = new List<Ship>();
-        Zone fight1;
-        List<Ship> ships2 = new List<Ship>();
-        Zone fight2;
-        List<Ship> ships = new List<Ship>();
-        Zone fight; //зона, на которую происходит текущая атака
-        Button[,] buttonsLeft = new Button[10, 10];
-        Button[,] buttonsRight = new Button[10, 10];
-        List<Vector> coordinates = new List<Vector>();
+        private List<Ship> ships1 = new List<Ship>();
+        private Zone fight1;
+        private List<Ship> ships2 = new List<Ship>();
+        private Zone fight2;
+        private List<Ship> ships = new List<Ship>();
+        private Zone fight; //зона, на которую происходит текущая атака
+        private Button[,] buttonsLeft = new Button[10, 10];
+        private Button[,] buttonsRight = new Button[10, 10];
+        private List<MyVector> coordinates = new List<MyVector>();
         public string name1;
         public string name2;
-        private string nameWin;
-        int step = 1;
-        public bool bot;
+        public string nameWin;
+        private int step = 1;
+        private bool bot;
         private bool part = false;
         private bool flagBotHit = false; //флаг - подбит ли корабль
         private int rowBotHit = -1; //строка попадания бота
@@ -42,9 +43,15 @@ namespace Project //для хранения массива кораблей ис
         private int indexShipBotHit = -1; //индекс подбитого ботом корабля
         private int orientationShipBotHit = -1; //1-корабль расположен вертикально, 2-горизонтально, -1 - иначе
         private bool watch = false;
+
         public BattleZone(List<Ship> ships1, Zone fight1, List<Ship> ships2, Zone fight2, string name1, string name2, bool bot)
         {
             InitializeComponent();
+            ImageBrush imBrush = new ImageBrush()
+            {
+                ImageSource = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/../../images/battle.jpg"))
+            };
+            this.Background = imBrush;
             this.ships1 = ships1;
             this.fight1 = fight1;
             this.ships2 = ships2;
@@ -86,16 +93,13 @@ namespace Project //для хранения массива кораблей ис
                     }
                 i = 0;
                 for (i = 3; i >= 0; i--)
-                    coordinates.Add(new Vector(i, 3 - i));
+                    coordinates.Add(new MyVector(i, 3 - i));
                 for (i = 7; i >= 0; i--)
-                    coordinates.Add(new Vector(i, 7 - i));
+                    coordinates.Add(new MyVector(i, 7 - i));
                 for (i = 9; i >= 6; i--)
-                    coordinates.Add(new Vector(i, 6 + 9 - i));
+                    coordinates.Add(new MyVector(i, 6 + 9 - i));
                 for (i = 9; i >= 2; i--)
-                    coordinates.Add(new Vector(i, 2 + 9 - i));
-
-
-
+                    coordinates.Add(new MyVector(i, 2 + 9 - i));
             }
 
         }
@@ -106,17 +110,17 @@ namespace Project //для хранения массива кораблей ис
         }
         public void secondFightBot()
         {
-            int i = 0;
-            coordinates.Add(new Vector(0, 1));
-            coordinates.Add(new Vector(1, 0));
-            coordinates.Add(new Vector(9, 8));
-            coordinates.Add(new Vector(8, 9));
+            int i;
+            coordinates.Add(new MyVector(0, 1));
+            coordinates.Add(new MyVector(1, 0));
+            coordinates.Add(new MyVector(9, 8));
+            coordinates.Add(new MyVector(8, 9));
             for (i = 5; i >= 0; i--)
-                coordinates.Add(new Vector(i, 5 - i));
+                coordinates.Add(new MyVector(i, 5 - i));
             for (i = 9; i >= 4; i--)
-                coordinates.Add(new Vector(i, 13 - i));
+                coordinates.Add(new MyVector(i, 13 - i));
             for (i = 9; i >= 0; i--)
-                coordinates.Add(new Vector(i, 9 - i));
+                coordinates.Add(new MyVector(i, 9 - i));
         }
         public void lastFightBot()
         {
@@ -129,7 +133,7 @@ namespace Project //для хранения массива кораблей ис
                     j = 1;
                 while (checkingCellsNearby(i, j))
                 {
-                    coordinates.Add(new Vector(i, j));
+                    coordinates.Add(new MyVector(i, j));
                     j += 2;
                 }
             }
@@ -150,7 +154,6 @@ namespace Project //для хранения массива кораблей ис
                     break;
             if (i == ships1.Count)
             {
-                MessageBox.Show("Победа игрока " + name2 + "!");
                 nameWin = name2;
                 return true;
             }
@@ -169,11 +172,26 @@ namespace Project //для хранения массива кораблей ис
             fightLabel.Content = "Бой завершился!";
             result.Content = "Победу одержал";
             labelMove.Content = nameWin;
-            congrat.Content="Поздравляем!";
+            congrat.Content = "Поздравляем!";
+        }
+        public void showWinner()
+        {
+            Win win = new Win();
+            win.winLabel.Content = "Вы проиграли!";
+            win.winner.Content = " ";
+            this.Hide();
+            win.ShowDialog();
+            this.Show();
+            if (win.closeWin || win.restart)
+                this.Close();         
+            restart.Visibility = Visibility.Visible;
+            showNotKilledShips();
+            watch = true;
         }
         public int afterBotHit() //добивание корабля, когда бот попал по нему
         {
-
+            if (watch)
+                return 0;
             int column = columnBotHit, row = rowBotHit;
             if (orientationShipBotHit == -1) //если не знаем как расположен корабль
             {
@@ -201,7 +219,11 @@ namespace Project //для хранения массива кораблей ис
                             if (hitBot(row + i, column) == false)
                             return 1;
                         else
+                        {
                             ships1[indexShipBotHit].searchShip(row + i, column);
+                            waitBotMove();
+                            moveLeft();
+                        }
                     for (i = 1; ships1[indexShipBotHit].checkDestroyedShip() != true; i++)
                         if (!checkingCellsNearby(row - i, column) || (fight1.moveMatrix[row - i, column] == 1 && fight1.matrixShips[row - i, column] == 0))
                             break;
@@ -209,7 +231,11 @@ namespace Project //для хранения массива кораблей ис
                              if (hitBot(row - i, column) == false)
                             return 1;
                         else
+                        {
                             ships1[indexShipBotHit].searchShip(row - i, column);
+                            waitBotMove();
+                            moveLeft();
+                        }
                 }
                 if (orientationShipBotHit == 2) //если корабль расположен горизонтально
                 {
@@ -220,7 +246,11 @@ namespace Project //для хранения массива кораблей ис
                             if (hitBot(row, column + i) == false)
                             return 1;
                         else
+                        {
                             ships1[indexShipBotHit].searchShip(row, column + i);
+                            waitBotMove();
+                            moveLeft();
+                        }
                     for (i = 1; ships1[indexShipBotHit].checkDestroyedShip() != true; i++)
                         if (!checkingCellsNearby(row, column - i) || (fight1.moveMatrix[row, column - i] == 1 && fight1.matrixShips[row, column - i] == 0))
                             break;
@@ -228,32 +258,29 @@ namespace Project //для хранения массива кораблей ис
                              if (hitBot(row, column - i) == false)
                             return 1;
                         else
+                        {
                             ships1[indexShipBotHit].searchShip(row, column - i);
+                            waitBotMove();
+                            moveLeft();
+                        }
                 }
-
+                waitBotMove();
                 for (i = 0; i < ships1[indexShipBotHit].Length; i++)
-                    coloringAfterKillingTheShip(ships1[indexShipBotHit].Coordinates[i].X, ships1[indexShipBotHit].Coordinates[i].Y);
+                    coloringAfterKillingTheShipBot(ships1[indexShipBotHit].Coordinates[i].X, ships1[indexShipBotHit].Coordinates[i].Y);
                 moveLeft();
                 flagBotHit = false;
                 rowBotHit = -1;
                 columnBotHit = -1;
                 indexShipBotHit = -1;
                 orientationShipBotHit = -1;
-
                 if (checkBotWin())
-                {
-                    Win win = new Win();
-                    win.winner.Content = name2;
-                    win.ShowDialog();
-                    showNotKilledShips();
-                    
-                }
+                    showWinner();
                 return 0;
             }
+            waitBotMove();
             fight1.moveMatrix[row, column] = 1;
             if (fight1.matrixShips[row, column] == 0) //если бот не попал, то ход переходит к другому игроку
             {
-
                 moveLeft();
                 return 1;
             }
@@ -269,15 +296,11 @@ namespace Project //для хранения массива кораблей ис
                 columnBotHit = -1;
                 indexShipBotHit = -1;
                 orientationShipBotHit = -1;
-
                 if (checkBotWin())
                 {
-                    Win win = new Win();
-                    win.winner.Content = name2;
-                    win.ShowDialog();
-                    showNotKilledShips();
+                    showWinner();
+                    return 0;
                 }
-                
                 return 0;
             }
             if (orientationShipBotHit == -1)//определение ориентации корабля
@@ -286,20 +309,22 @@ namespace Project //для хранения массива кораблей ис
                 else
                     if (rowBotHit == row)
                     orientationShipBotHit = 2;
-
+            waitBotMove();
             afterBotHit();
-
             return 0;
+        }
+        public async void waitBotMove()
+        {
+            await Task.Run(() => System.Threading.Thread.Sleep(800));
         }
         private int botMove()
         {
+            if (watch)
+                return 0;
             int i = 0;
             if (checkBotWin())
             {
-                Win win = new Win();
-                win.winner.Content = name2;
-                win.ShowDialog();
-                showNotKilledShips();
+                showWinner();
                 return 0;
             }
             if (coordinates.Count == 0) //если лист клеток текущего этапа пуст, то задаем лист с новыми клетками
@@ -325,6 +350,7 @@ namespace Project //для хранения массива кораблей ис
                 botMove();
                 return 0;
             }
+            waitBotMove();
             fight1.moveMatrix[_row, _column] = 1; //фиксируем удар бота
             coordinates.RemoveAt(i);
             if (fight1.matrixShips[_row, _column] == 1)//если бот попал
@@ -346,35 +372,30 @@ namespace Project //для хранения массива кораблей ис
                     columnBotHit = -1;
                     indexShipBotHit = -1;
                     orientationShipBotHit = -1;
+                    waitBotMove();
+
                     moveLeft();
                     botMove();
                     return 0;
                 }
-
                 int k = afterBotHit();//добиваем корабль
                 if (k == 1) //если бот не попал, то ходит другой игрок
                 {
                     step++;
+                    waitBotMove();
                     moveLeft();
                     return 0;
                 }
                 botMove();
                 return 0;
             }
-
             moveLeft(); //пересчет матрицы после очередного выстрела            
             if (checkBotWin())
             {
-                Win win = new Win();
-                win.winner.Content = name2;
-                win.ShowDialog();
-
-                showNotKilledShips();
-
-               
+                showWinner();
+                return 0;
             }
-                //  this.Close();
-                step++;
+            step++;
             return 0;
         }
         private void moveRight()//пересчет матрицы после очередного выстрела
@@ -452,7 +473,6 @@ namespace Project //для хранения массива кораблей ис
                 _column = Grid.GetColumn((Button)sender) - 1;
                 if (fight.moveMatrix[_row, _column] == 1)
                     return;
-                
                 fight.moveMatrix[_row, _column] = 1;
                 if (fight.matrixShips[_row, _column] == 1)
                 {
@@ -473,30 +493,36 @@ namespace Project //для хранения массива кораблей ис
                     if (ships[i].checkDestroyedShip() != true)
                         break;
                 if (i == ships.Count)
+                {
+                    Win win = new Win();
                     if (step % 2 == 0)
                     {
-                        Win win = new Win();
                         win.winner.Content = name2;
-                        win.ShowDialog();
-                        if (win.restart)
-                            this.Close();
-                        watch = true;
-                        restert.Visibility = Visibility.Visible;
                         nameWin = name2;
-                        showNotKilledShips();
                     }
                     else
                     {
-                        Win win = new Win();
-                        win.winner.Content = name1;
-                        win.ShowDialog();
-                        if (win.restart)
-                            this.Close();
-                        watch = true;
-                        restert.Visibility = Visibility.Visible;
-                        nameWin = name1;
-                        showNotKilledShips();
+                        if (bot)
+                        {
+                            win.winLabel.Content = "Вы победили!";
+                            win.winner.Content = " ";
+                        }
+                        else
+                        {
+                            win.winner.Content = name1;
+                            nameWin = name1;
+                        }
                     }
+                    this.Hide();
+                    win.ShowDialog();
+                    this.Show();
+                    if (win.restart || win.closeWin)
+                        this.Close();
+                    watch = true;
+                    restart.Visibility = Visibility.Visible;
+                    showNotKilledShips();
+                    return;
+                }
                 if (fight.matrixShips[_row, _column] != 1) //ход другого игрока, при условии, что попадания не было
                 {
                     step++;
@@ -507,11 +533,11 @@ namespace Project //для хранения массива кораблей ис
                 }
                 if (step % 2 == 0 && bot) //ход бота
                 {
-                    labelMove.Content = name2;
-                    
-                    await Task.Run(()=> System.Threading.Thread.Sleep(200));
+                    if (!watch)
+                        labelMove.Content = name2;
+                    await Task.Run(() => System.Threading.Thread.Sleep(200));
                     fight = fight1;
-                    if (flagBotHit) //если есть корабль, который подбит, но не уничтожен
+                    if (flagBotHit) //если есть  корабль, который подбит, но не уничтожен
                     {
                         if (afterBotHit() == 1)//добивание корабля
                             step++;
@@ -520,9 +546,10 @@ namespace Project //для хранения массива кораблей ис
                     }
                     else
                         botMove(); //рандомный удар бота
-                    labelMove.Content = name1;
+                    if (!watch)
+                        labelMove.Content = name1;
                 }
-             
+
             }
         }
         private void MyControl1_Click_Red(object sender)
@@ -551,6 +578,9 @@ namespace Project //для хранения массива кораблей ис
             this.Close();
         }
 
-       
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
