@@ -225,9 +225,11 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            
+
         </Grid>
-        <Button x:Name="closeButton" Content="Закрыть" HorizontalAlignment="Left" Height="30" Margin="1040,10,0,0" VerticalAlignment="Top" Width="61" Click="closeButton_Click" Background="#FFF5DCF9"/>
+        <Button x:Name="closeButton" Content="Закрыть" HorizontalAlignment="Left" Height="30" Margin="1025,10,0,0" VerticalAlignment="Top" Width="76" Click="closeButton_Click" Background="#FFF5DCF9"/>
+        <Button x:Name="save" Content="Сохранить" HorizontalAlignment="Left" Height="30" Margin="1025,55,0,0" VerticalAlignment="Top" Width="76"  Background="#FFF5DCF9" Click="save_Click"/>
+        <Button x:Name="goToMenuButton" Content="В меню" HorizontalAlignment="Left" Height="30" Margin="929,10,0,0" VerticalAlignment="Top" Width="76" Background="#FFF5DCF9" Click="goToMenuButton_Click"/>
     </Grid>
 
 

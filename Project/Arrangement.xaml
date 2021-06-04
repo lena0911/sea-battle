@@ -107,5 +107,6 @@
         <Label Content="Введите Ваше имя:" HorizontalAlignment="Left" Height="38" Margin="488,498,0,0" VerticalAlignment="Top" Width="210" FontFamily="Segoe UI Black" Background="#FFFFCDF4" Foreground="#FF810381" FontSize="20"/>
         <TextBox x:Name="Name"  HorizontalAlignment="Left" Height="45" Margin="488,541,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" FontSize="20" FontFamily="Yu Gothic UI Semilight" />
         <Button  x:Name="closeButton" Content="Закрыть" HorizontalAlignment="Left" Height="35" Margin="1030,10,0,0" VerticalAlignment="Top" Width="66" Click="closeButton_Click" BorderBrush="Gray" Background="#FFACBCF1" FontSize="15" FontFamily="Yu Gothic UI Semilight" />
+        <Button  x:Name="goToMenuButton" Content="В меню" HorizontalAlignment="Left" Height="35" Margin="1030,58,0,0" VerticalAlignment="Top" Width="66" BorderBrush="Gray" Background="#FFACBCF1" FontSize="15" FontFamily="Yu Gothic UI Semilight" Click="goToMenuButton_Click" />
     </Grid>
 </Window>

@@ -11,15 +11,20 @@ namespace seaBattle_Library
         public int length; //количество палуб
         public MyVector[] coordinates; //массив из вектор-координат
         public bool[] shot; //массив попаданий в каждую палубу корабля
-
+        public int orientation;
         public MyVector[] Coordinates { get => coordinates; set => coordinates = value; }
         public int Length { get => length; set => length = value; }
         public bool[] Shot { get => shot; set => shot = value; }
+        public int Orientation { get => orientation; set => orientation = value; }
 
         public Ship(int Lenght, int x, int y, bool direction) //direction = true, если расположен вертикально. false - горизонтально
         {
             Length = Lenght;
             Coordinates = new MyVector[Length];
+            if (direction)
+                orientation = 1;
+            else
+                orientation = 0;
             if (direction)
                 for (int i = 0; i < Length; i++)
                     Coordinates[i] = new MyVector(x + i, y);

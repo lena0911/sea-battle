@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using seaBattle_Library;
 namespace seaBattle_Library
 {
     public class Zone
@@ -20,6 +20,18 @@ namespace seaBattle_Library
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < n; j++)
                     moveMatrix[i, j] = 0;
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < ships[i].Length; j++)
+                    matrixShips[ships[i].Coordinates[j].X, ships[i].Coordinates[j].Y] = 1;
+        }
+        public Zone(List<Ship> ships, int[,] a)
+        {
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    matrixShips[i, j] = 0;
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    moveMatrix[i, j] = a[i, j];
             for (int i = 0; i < ships.Count; i++)
                 for (int j = 0; j < ships[i].Length; j++)
                     matrixShips[ships[i].Coordinates[j].X, ships[i].Coordinates[j].Y] = 1;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -50,7 +51,6 @@ namespace Project
             else
                 return true;
         }
-
         private void CheckVisibleRadioButtons() //проверка допустимого кол-ва нажатий на радиокнопку
         {
             if (pal4 == 1)
@@ -78,7 +78,6 @@ namespace Project
             if (pal_4.IsChecked == false && pal_4.IsEnabled == true)
                 pal_4.IsChecked = true;
         }
-
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             if (ships.Count < 10)
@@ -94,7 +93,6 @@ namespace Project
             name = Name.Text;
             this.Close();
         }
-
         public void blok(Ship ship)
         {
             for (int t = 0; t < ship.Length; t++)
@@ -126,7 +124,7 @@ namespace Project
         }
         private int checkLoc(int i, int j, int lenght, bool orientation)//orientation=false, если по горизонтали
         {
-            int t1 = 0, t2 = 0;
+            int t1,t2;
             if (!orientation)
             {
                 for (t1 = 0; t1 < lenght; t1++)
@@ -210,7 +208,6 @@ namespace Project
                     MyControl1_Click_Salmon(buttons[ships[i].Coordinates[j].X, ships[i].Coordinates[j].Y]);
             }
         }
-
         private void Button_Click_Clear(object sender, RoutedEventArgs e)
         {
             pal1 = 0;
@@ -222,16 +219,20 @@ namespace Project
             ships.Clear();
             CheckVisibleRadioButtons();
         }
-
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             closeWind = true;
             this.Close();
         }
-
+        private void goToMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            Process.Start(path);
+            Process.GetCurrentProcess().Kill();
+        }
         private void Button_Click(object sender, EventArgs e)
         {
-            int position = 0;
+            int position;
             if (sender != null)
             {
                 int _row = Grid.GetRow((Button)sender);
@@ -474,6 +475,5 @@ namespace Project
             b.Background = Brushes.LightGray;
             int row = Grid.GetColumn(b);
         }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using seaBattle_Library;
 
 namespace Project //для хранения массива кораблей использ коллекцию
@@ -43,8 +45,9 @@ namespace Project //для хранения массива кораблей ис
         private int indexShipBotHit = -1; //индекс подбитого ботом корабля
         private int orientationShipBotHit = -1; //1-корабль расположен вертикально, 2-горизонтально, -1 - иначе
         private bool watch = false;
+        private bool flag=false;
 
-        public BattleZone(List<Ship> ships1, Zone fight1, List<Ship> ships2, Zone fight2, string name1, string name2, bool bot)
+        public BattleZone(List<Ship> ships1, Zone fight1, List<Ship> ships2, Zone fight2, string name1, string name2, bool bot, int step)
         {
             InitializeComponent();
             ImageBrush imBrush = new ImageBrush()
@@ -59,10 +62,11 @@ namespace Project //для хранения массива кораблей ис
             this.name1 = name1;
             this.name2 = name2;
             this.bot = bot;
+            this.step = step;
             labelPlayer1.Content = name1;
             labelPlayer2.Content = name2;
             labelMove.Content = name1;
-
+           
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                 {
@@ -72,6 +76,7 @@ namespace Project //для хранения массива кораблей ис
                     buttonsLeft[i, j].Click += new RoutedEventHandler(this.Button_Click);
                     GridZoneLeft.Children.Add(buttonsLeft[i, j]);
                 }
+           
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                 {
@@ -81,6 +86,7 @@ namespace Project //для хранения массива кораблей ис
                     buttonsRight[i, j].Click += new RoutedEventHandler(this.Button_Click);
                     GridZoneRight.Children.Add(buttonsRight[i, j]);
                 }
+     
             if (bot) //заполнение координат матрицы для первого круга ударов бота
             {
                 int i = 0, j = 0; ;
@@ -101,8 +107,24 @@ namespace Project //для хранения массива кораблей ис
                 for (i = 9; i >= 2; i--)
                     coordinates.Add(new MyVector(i, 2 + 9 - i));
             }
-
+            moveLeft();
+            moveRight();
+            if (step % 2 != 0)
+                labelMove.Content = name1;
+            else
+                labelMove.Content = name2;
+            this.Closing += BattleZone_Closing;
         }
+        private void BattleZone_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (flag)
+                return;
+            MessageBoxResult message= MessageBox.Show("Сохранить игру перед закрытием?", "",MessageBoxButton.YesNoCancel,MessageBoxImage.Question);
+            if(message==MessageBoxResult.Yes)
+                save_Click(null, null);
+            if(message == MessageBoxResult.Cancel)
+                e.Cancel=true;
+        }       
         public int randGeneration(int i, int j)
         {
             Random rnd = new Random();
@@ -124,7 +146,7 @@ namespace Project //для хранения массива кораблей ис
         }
         public void lastFightBot()
         {
-            int i = 0, j = 0;
+            int i,j;
             for (i = 0; i <= 9; i++)
             {
                 if (i % 2 == 0)
@@ -148,7 +170,7 @@ namespace Project //для хранения массива кораблей ис
         }
         public bool checkBotWin()
         {
-            int i = 0;
+            int i;
             for (i = 0; i < ships1.Count; i++)
                 if (ships1[i].checkDestroyedShip() != true)
                     break;
@@ -183,7 +205,10 @@ namespace Project //для хранения массива кораблей ис
             win.ShowDialog();
             this.Show();
             if (win.closeWin || win.restart)
-                this.Close();         
+            {
+                flag = true;
+                this.Close();
+            }
             restart.Visibility = Visibility.Visible;
             showNotKilledShips();
             watch = true;
@@ -209,7 +234,7 @@ namespace Project //для хранения массива кораблей ис
             }
             else
             {
-                int i = 0;
+                int i;
                 if (orientationShipBotHit == 1) //если корабль расположен вертикально
                 {
                     for (i = 1; ships1[indexShipBotHit].checkDestroyedShip() != true; i++)
@@ -321,7 +346,7 @@ namespace Project //для хранения массива кораблей ис
         {
             if (watch)
                 return 0;
-            int i = 0;
+            int i;
             if (checkBotWin())
             {
                 showWinner();
@@ -343,7 +368,6 @@ namespace Project //для хранения массива кораблей ис
                 i = randGeneration(0, coordinates.Count);
             int _row = coordinates[i].X;
             int _column = coordinates[i].Y;
-
             while (fight1.moveMatrix[_row, _column] == 1) //пропускам клетки, по которым уже были удары
             {
                 coordinates.RemoveAt(i);
@@ -373,7 +397,6 @@ namespace Project //для хранения массива кораблей ис
                     indexShipBotHit = -1;
                     orientationShipBotHit = -1;
                     waitBotMove();
-
                     moveLeft();
                     botMove();
                     return 0;
@@ -404,10 +427,10 @@ namespace Project //для хранения массива кораблей ис
             for (i = 0; i < 10; i++)
                 for (j = 0; j < 10; j++)
                 {
-                    if (fight.moveMatrix[i, j] == 1 && fight.matrixShips[i, j] == 1)
+                    if (fight2.moveMatrix[i, j] == 1 && fight2.matrixShips[i, j] == 1)
                         MyControl1_Click_Red(buttonsRight[i, j]);
                     else
-                        if (fight.moveMatrix[i, j] == 1)
+                        if (fight2.moveMatrix[i, j] == 1)
                         MyControl1_Click_Gray(buttonsRight[i, j]);
                 }
         }
@@ -417,10 +440,10 @@ namespace Project //для хранения массива кораблей ис
             for (i = 0; i < 10; i++)
                 for (j = 0; j < 10; j++)
                 {
-                    if (fight.moveMatrix[i, j] == 1 && fight.matrixShips[i, j] == 1)
+                    if (fight1.moveMatrix[i, j] == 1 && fight1.matrixShips[i, j] == 1)
                         MyControl1_Click_Red(buttonsLeft[i, j]);
                     else
-                        if (fight.moveMatrix[i, j] == 1)
+                        if (fight1.moveMatrix[i, j] == 1)
                         MyControl1_Click_Gray(buttonsLeft[i, j]);
                 }
         }
@@ -501,7 +524,6 @@ namespace Project //для хранения массива кораблей ис
                         nameWin = name2;
                     }
                     else
-                    {
                         if (bot)
                         {
                             win.winLabel.Content = "Вы победили!";
@@ -512,12 +534,14 @@ namespace Project //для хранения массива кораблей ис
                             win.winner.Content = name1;
                             nameWin = name1;
                         }
-                    }
                     this.Hide();
                     win.ShowDialog();
                     this.Show();
                     if (win.restart || win.closeWin)
+                    {
+                        flag = true;
                         this.Close();
+                    }
                     watch = true;
                     restart.Visibility = Visibility.Visible;
                     showNotKilledShips();
@@ -549,7 +573,6 @@ namespace Project //для хранения массива кораблей ис
                     if (!watch)
                         labelMove.Content = name1;
                 }
-
             }
         }
         private void MyControl1_Click_Red(object sender)
@@ -570,17 +593,65 @@ namespace Project //для хранения массива кораблей ис
             b.Background = Brushes.Salmon;
             int row = Grid.GetColumn(b);
         }
-
         private void restert_Click(object sender, RoutedEventArgs e)
         {
+            flag = true;
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
         }
-
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text documents (.txt)|*.txt";
+            string CombinedPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\saves");
+            saveFileDialog1.InitialDirectory = System.IO.Path.GetFullPath(CombinedPath);
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, false, System.Text.Encoding.Default))
+                {
+                    if (bot)
+                        sw.WriteLine(1);
+                    else
+                        sw.WriteLine(0);
+                    sw.WriteLine(name1);
+                    for(int i=0; i<10; i++)
+                    {
+                        sw.WriteLine(ships1[i].Length + " " + ships1[i].Coordinates[0].X + " " + ships1[i].Coordinates[0].Y + " " + ships1[i].orientation);
+                    }
+                    for(int i=0; i<10; i++)
+                    {
+                        for(int j=0; j<10; j++)
+                            sw.Write(fight1.moveMatrix[i, j] + " ");
+                        sw.WriteLine();
+                    }
+                    sw.WriteLine(name2);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        sw.WriteLine(ships2[i].Length + " " + ships2[i].Coordinates[0].X + " " + ships2[i].Coordinates[0].Y + " " + ships2[i].orientation);
+                    }
+                    for (int i = 0; i < 10; i++)
+                    {
+                        for (int j = 0; j < 10; j++)
+                            sw.Write(fight2.moveMatrix[i, j] + " ");
+                        sw.WriteLine();
+                    }
+                    sw.WriteLine(step);
+
+                }
+            }
+        }
+
+        private void goToMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            Process.Start(path);
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

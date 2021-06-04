@@ -12,12 +12,10 @@ namespace seaBattle_Library
         int pal1 = 4, pal2 = 3, pal3 = 2, pal4 = 1;
         const int n = 10;
         public int[,] matrixShips = new int[n, n];
-
         public int Pal1 { get => pal1; set => pal1 = value; }
         public int Pal2 { get => pal2; set => pal2 = value; }
         public int Pal3 { get => pal3; set => pal3 = value; }
         public int Pal4 { get => pal4; set => pal4 = value; }
-
         public AutomaticLocation(List<Ship> ships)
         {
             for (int i = 0; i < n; i++)
@@ -59,12 +57,10 @@ namespace seaBattle_Library
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                     if (matrixShips[i, j] == 1)
-                    {
                         for (int k = -1; k <= 1; k++)
                             for (int t = -1; t <= 1; t++)
                                 if (CheckingCellsNearby(i + k, j + t) && matrixShips[i + k, j + t] == 0)
                                     matrixShips[i + k, j + t] = 2;
-                    }
         }
         public void fillingTheMatrix(int i, int j, int n, bool or) //заполнение матрицы после добавления корабля
         {   //or == true, когда корабль вертик. false - горизонт 
